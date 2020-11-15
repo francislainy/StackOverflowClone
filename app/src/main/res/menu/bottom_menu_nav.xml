@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/updatesFragment"
+        android:icon="@drawable/ic_launcher_background"
+        android:orderInCategory="1"
+        android:title="Home"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/checkInBottomFragment"
+        android:icon="@drawable/ic_launcher_background"
+        android:orderInCategory="1"
+        android:title="My Repository"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/contactTracingBottomFragment"
+        android:icon="@drawable/ic_launcher_background"
+        android:orderInCategory="2"
+        android:title="Favourites"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/share"
+        android:icon="@drawable/ic_launcher_background"
+        android:orderInCategory="2"
+        android:title="Profile"
+        app:showAsAction="always" />
+
+</menu>

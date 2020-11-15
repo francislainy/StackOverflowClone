@@ -9,7 +9,7 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-<!--        <include layout="@layout/snippet_toolbar_plain" />-->
+        <!--        <include layout="@layout/snippet_toolbar_plain" />-->
 
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
@@ -28,18 +28,18 @@
 
         </androidx.core.widget.NestedScrollView>
 
-<!--        <com.google.android.material.bottomnavigation.BottomNavigationView-->
-<!--            android:id="@+id/bottomNav"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_gravity="bottom"-->
-<!--            android:background="@color/white"-->
-<!--            app:itemIconSize="20dp"-->
-<!--            app:labelVisibilityMode="labeled"-->
-<!--            app:itemIconTint="@drawable/nav_items_color"-->
-<!--            app:itemTextColor="@drawable/nav_items_color"-->
-<!--            android:theme="@style/BottomNavigationStyle"-->
-<!--            app:menu="@menu/bottom_menu_nav" />-->
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottomNav"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:background="@color/colorPrimary"
+            android:theme="@style/BottomNavigationStyle"
+            app:itemIconSize="20dp"
+            app:itemIconTint="@color/white"
+            app:itemTextColor="@color/white"
+            app:labelVisibilityMode="labeled"
+            app:menu="@menu/bottom_menu_nav" />
 
     </LinearLayout>
 
