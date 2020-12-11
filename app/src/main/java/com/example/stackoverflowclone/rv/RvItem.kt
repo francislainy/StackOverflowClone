@@ -1,35 +1,23 @@
 package com.example.stackoverflowclone.rv
 
-import androidx.navigation.NavController
+import android.view.View
 import com.example.stackoverflowclone.R
 import com.example.stackoverflowclone.activities.MainActivity
-import com.xwray.groupie.GroupieViewHolder
-import com.xwray.groupie.Item
-import kotlinx.android.synthetic.main.rv_item.view.*
+import com.example.stackoverflowclone.databinding.RvItemBinding
+import com.xwray.groupie.viewbinding.BindableItem
 
 private val LOG_TAG = RvItem::class.java.canonicalName
 
-class RvItem(
-    private val activity: MainActivity,
-    private val title: String
-) : Item<GroupieViewHolder>() {
+open class RvItem @JvmOverloads constructor(
+    val activity: MainActivity,
+    val text: CharSequence = ""
+) : BindableItem<RvItemBinding>() {
 
-    override fun bind(viewHolder: GroupieViewHolder, position: Int) {
+    override fun getLayout(): Int = R.layout.rv_item
 
-        var navController: NavController? = null
+    override fun initializeViewBinding(view: View): RvItemBinding = RvItemBinding.bind(view)
 
-        viewHolder.apply {
-
-            with(viewHolder.itemView) {
-
-                tvTitle.text = title
-
-            }
-
-        }
+    override fun bind(viewBinding: RvItemBinding, position: Int) {
+        viewBinding.tvTitle.text = text
     }
-
-
-    override fun getLayout() = R.layout.rv_item
-
 }
