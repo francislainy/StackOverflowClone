@@ -9,7 +9,7 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <!--        <include layout="@layout/snippet_toolbar_plain" />-->
+<!--                <include layout="@layout/snippet_toolbar_plain" />-->
 
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
@@ -33,7 +33,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
-            android:background="@color/colorPrimary"
+            android:background="#2878bb"
             android:theme="@style/BottomNavigationStyle"
             app:itemIconSize="20dp"
             app:itemIconTint="@color/white"
