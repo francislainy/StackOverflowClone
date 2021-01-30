@@ -9,6 +9,24 @@
         android:id="@+id/homeFragment"
         android:name="com.example.stackoverflowclone.fragments.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_homeFragment_to_questionDetailFragment"
+            app:destination="@id/questionDetailFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/questionDetailFragment"
+        android:name="com.example.stackoverflowclone.fragments.QuestionDetailFragment"
+        android:label="fragment_question_detail"
+        tools:layout="@layout/fragment_question_detail">
+        <action
+            android:id="@+id/action_questionDetailFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+        <argument
+            android:name="myArg"
+            app:argType="string"
+            android:defaultValue="0" />
+    </fragment>
 
 </navigation>

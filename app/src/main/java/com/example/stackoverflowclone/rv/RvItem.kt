@@ -1,6 +1,9 @@
 package com.example.stackoverflowclone.rv
 
 import android.view.View
+import androidx.core.os.bundleOf
+import androidx.navigation.NavController
+import androidx.navigation.Navigation
 import com.example.stackoverflowclone.R
 import com.example.stackoverflowclone.activities.MainActivity
 import com.example.stackoverflowclone.databinding.RvItemBinding
@@ -19,5 +22,21 @@ open class RvItem @JvmOverloads constructor(
 
     override fun bind(viewBinding: RvItemBinding, position: Int) {
         viewBinding.tvTitle.text = text
+        var navController: NavController? = null
+
+        viewBinding.tvTitle.apply {
+
+            setOnClickListener {
+
+                navController = Navigation.findNavController(activity, R.id.nav_host_fragment)
+                val bundle = bundleOf(
+                    "section" to text,
+                )
+
+                navController!!.navigate(R.id.action_homeFragment_to_questionDetailFragment, bundle)
+
+            }
+
+        }
     }
 }
