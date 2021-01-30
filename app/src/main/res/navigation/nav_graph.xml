@@ -25,8 +25,7 @@
             app:destination="@id/homeFragment" />
         <argument
             android:name="myArg"
-            app:argType="string"
-            android:defaultValue="0" />
+            app:argType="string" />
     </fragment>
 
 </navigation>

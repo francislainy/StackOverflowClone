@@ -4,16 +4,18 @@ import android.view.View
 import androidx.core.os.bundleOf
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
+import androidx.navigation.findNavController
 import com.example.stackoverflowclone.R
 import com.example.stackoverflowclone.activities.MainActivity
 import com.example.stackoverflowclone.databinding.RvItemBinding
+import com.example.stackoverflowclone.fragments.HomeFragment
+import com.example.stackoverflowclone.fragments.HomeFragmentDirections
+import com.example.stackoverflowclone.fragments.QuestionDetailFragmentDirections
 import com.xwray.groupie.viewbinding.BindableItem
 
-private val LOG_TAG = RvItem::class.java.canonicalName
-
 open class RvItem @JvmOverloads constructor(
-    val activity: MainActivity,
-    val text: CharSequence = ""
+    private val activity: MainActivity,
+    private val text: CharSequence = ""
 ) : BindableItem<RvItemBinding>() {
 
     override fun getLayout(): Int = R.layout.rv_item
@@ -27,16 +29,22 @@ open class RvItem @JvmOverloads constructor(
         viewBinding.tvTitle.apply {
 
             setOnClickListener {
+                
+                val action =
+                    HomeFragmentDirections.actionHomeFragmentToQuestionDetailFragment(text.toString())
 
                 navController = Navigation.findNavController(activity, R.id.nav_host_fragment)
-                val bundle = bundleOf(
-                    "section" to text,
-                )
-
-                navController!!.navigate(R.id.action_homeFragment_to_questionDetailFragment, bundle)
+                navController!!.navigate(action)
 
             }
 
         }
     }
+
+
+    companion object {
+
+        val LOG_TAG = RvItem::class.java.canonicalName
+    }
+
 }
