@@ -12,8 +12,10 @@ import com.example.stackoverflowclone.activities.MainActivity
 import com.example.stackoverflowclone.api.GetResponseAPI
 import com.example.stackoverflowclone.databinding.FragmentHomeBinding
 import com.example.stackoverflowclone.model.APIError
+import com.example.stackoverflowclone.model.Question
 import com.example.stackoverflowclone.model.Questions
 import com.example.stackoverflowclone.rv.RvItem
+import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.google.gson.JsonObject
 import com.xwray.groupie.GroupAdapter
@@ -82,7 +84,11 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         adapter = GroupAdapter()
 
         for (q in questions!!.questions) {
-            adapter!!.add(RvItem(activity as MainActivity, q.title))
+
+            val gson = Gson()
+            val question = gson.toJson(q, Question::class.java)
+
+            adapter!!.add(RvItem(activity as MainActivity, question))
         }
 
         rvItem.layoutManager = LinearLayoutManager(activity)

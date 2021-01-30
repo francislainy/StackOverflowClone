@@ -11,11 +11,13 @@ import com.example.stackoverflowclone.databinding.RvItemBinding
 import com.example.stackoverflowclone.fragments.HomeFragment
 import com.example.stackoverflowclone.fragments.HomeFragmentDirections
 import com.example.stackoverflowclone.fragments.QuestionDetailFragmentDirections
+import com.example.stackoverflowclone.model.Question
+import com.google.gson.Gson
 import com.xwray.groupie.viewbinding.BindableItem
 
 open class RvItem @JvmOverloads constructor(
     private val activity: MainActivity,
-    private val text: CharSequence = ""
+    private val json: String = ""
 ) : BindableItem<RvItemBinding>() {
 
     override fun getLayout(): Int = R.layout.rv_item
@@ -23,15 +25,20 @@ open class RvItem @JvmOverloads constructor(
     override fun initializeViewBinding(view: View): RvItemBinding = RvItemBinding.bind(view)
 
     override fun bind(viewBinding: RvItemBinding, position: Int) {
-        viewBinding.tvTitle.text = text
+
+        val gson = Gson()
+        val question = gson.fromJson(json, Question::class.java)
+
+        viewBinding.tvTitle.text = question.title
+
         var navController: NavController? = null
 
         viewBinding.tvTitle.apply {
 
             setOnClickListener {
-                
+
                 val action =
-                    HomeFragmentDirections.actionHomeFragmentToQuestionDetailFragment(text.toString())
+                    HomeFragmentDirections.actionHomeFragmentToQuestionDetailFragment(question.title)
 
                 navController = Navigation.findNavController(activity, R.id.nav_host_fragment)
                 navController!!.navigate(action)
