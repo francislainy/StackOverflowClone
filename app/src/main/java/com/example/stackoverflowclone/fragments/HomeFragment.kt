@@ -6,10 +6,11 @@ import android.util.Log
 import android.view.View
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.stackoverflowclone.R
 import com.example.stackoverflowclone.activities.MainActivity
-import com.example.stackoverflowclone.api.GetResponseAPI
+import com.example.stackoverflowclone.api.GetAPICallback
 import com.example.stackoverflowclone.databinding.FragmentHomeBinding
 import com.example.stackoverflowclone.model.APIError
 import com.example.stackoverflowclone.model.Question
@@ -42,13 +43,21 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         binding = FragmentHomeBinding.bind(view)
         binding.btnAsqQuestion.text = "Ask Question"
 
+        binding.btnAsqQuestion.setOnClickListener {
+
+            val action = HomeFragmentDirections.actionHomeFragmentToAskFragment()
+            val navController =
+                Navigation.findNavController(requireActivity(), R.id.nav_host_fragment)
+            navController.navigate(action)
+        }
+
     }
 
 
     private fun getResponseApi(fullUrl: String) {
 
-        GetResponseAPI.postData(
-            object : GetResponseAPI.ThisCallback {
+        GetAPICallback.postData(
+            object : GetAPICallback.ThisCallback {
 
                 @RequiresApi(Build.VERSION_CODES.N)
                 override fun onSuccess(jo: JsonObject) {

@@ -10,9 +10,9 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-object GetResponseAPI {
+object GetAPICallback {
 
-    private val LOG_TAG = GetResponseAPI::class.java.canonicalName
+    private val LOG_TAG = GetAPICallback::class.java.canonicalName
 
     interface ThisCallback {
 

@@ -16,7 +16,7 @@ public class Question {
     public String description;
     @SerializedName("creationDate")
     @Expose
-    public Integer creationDate;
+    public Long creationDate;
 
 }
 
